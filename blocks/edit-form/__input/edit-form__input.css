@@ -1,0 +1,19 @@
+.edit-form__input {
+  width: 100%;
+  height: 27.34px;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  margin: 0 auto 29.74px;
+}
+
+.edit-form__input:last-of-type {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 320px) {
+  .edit-form__input {
+    height: 26px;
+    margin-bottom: 30px;
+  }
+}

@@ -1,0 +1,9 @@
+.button {
+  border: none;
+  background: transparent;
+  background-size: contain;
+  display: block;
+  padding: 0;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
