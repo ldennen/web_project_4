@@ -14,7 +14,7 @@
   opacity: 0.8;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 570px) {
   .button_location_submit {
     width: 238px;
     height: 46px;

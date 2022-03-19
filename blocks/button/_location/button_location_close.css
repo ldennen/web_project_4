@@ -12,7 +12,7 @@
   opacity: 0.6;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 570px) {
   .button_location_close {
     width: 26px;
     height: 26px;
