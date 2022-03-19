@@ -1,4 +1,4 @@
-.button_info {
+.button_location_info {
   width: 24px;
   height: 24px;
   background-image: url(../../../images/edit-button.svg);
@@ -7,12 +7,12 @@
   transition: opacity .25s ease-out;
 }
 
-.button_info:hover {
+.button_location_info:hover {
   opacity: 0.6;
 }
 
 @media screen and (max-width: 320px) {
-  .button_info {
+  .button_location_info {
     max-width: 18px;
     max-height: 18px;
   }

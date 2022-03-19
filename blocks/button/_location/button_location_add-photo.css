@@ -1,23 +1,27 @@
-.button_add-photo {
+.button_location_add-photo {
   max-width: 150px;
   width: 100%;
   height: 50px;
   border: 2px solid #fff;
   transition: opacity .25s ease-out;
+  border-radius: 2px;
+  background-image: url(../../../images/add-button.svg);
+  background-size: 22px;
+  background-position: center;
 }
 
-.button_add-photo:hover {
+.button_location_add-photo:hover {
   opacity: 0.6;
 }
 
 @media screen and (max-width: 768px) {
-  .button_add-photo {
+  .button_location_add-photo {
     max-width: 100px;
   }
 }
 
 @media screen and (max-width: 620px) {
-  .button_add-photo {
+  .button_location_add-photo {
     max-width: 100%;
   }
 }

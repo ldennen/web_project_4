@@ -1,4 +1,4 @@
-.button_close {
+.button_location_close {
   position: absolute;
   top: -45px;
   right: -45px;
@@ -8,12 +8,12 @@
   transition: opacity .25s ease-out;
 }
 
-.button_close:hover {
+.button_location_close:hover {
   opacity: 0.6;
 }
 
 @media screen and (max-width: 320px) {
-  .button_close {
+  .button_location_close {
     width: 26px;
     height: 26px;
     right: 0;

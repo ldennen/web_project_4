@@ -1,8 +1,8 @@
 const editFormEl = document.querySelector('.edit-form');
-const editFormNameInput = document.querySelector('.edit-form__input_name');
-const editFormAbtInput = document.querySelector('.edit-form__input_about-me');
-const editInfoBtn = document.querySelector('.button_info');
-const closeBtnEl = document.querySelector('.button_close')
+const editFormNameInput = document.querySelector('.edit-form__input_location_name');
+const editFormAbtInput = document.querySelector('.edit-form__input_location_about-me');
+const editInfoBtn = document.querySelector('.button_location_info');
+const closeBtnEl = document.querySelector('.button_location_close')
 const popupEl = document.querySelector('.popup');
 const profileNameEl = document.querySelector('.profile__info-name');
 const profileAbtEl = document.querySelector('.profile__info-about-me');
@@ -13,14 +13,15 @@ function closePopup() {
 
 editInfoBtn.addEventListener('click', function(){
   popupEl.classList.add('popup_open');
+  editFormNameInput.value = profileNameEl.textContent;
+  editFormAbtInput.value = profileAbtEl.textContent;
 });
 
 closeBtnEl.addEventListener('click', function(){
   closePopup();
 });
 
-editFormNameInput.value = profileNameEl.textContent;
-editFormAbtInput.value = profileAbtEl.textContent;
+
 
 editFormEl.addEventListener('submit', function(event) {
   event.preventDefault();

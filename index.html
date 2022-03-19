@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Around The U.S.</title> 
-    <link rel="stylesheet" href="./vendor/index.css">
+    <link rel="stylesheet" href="./pages/index.css">
   </head>
   <body class="page">
     <header class="header">
@@ -14,72 +14,70 @@
       <section class="profile">
         <img class="profile__avatar" src="./images/jacques-costeau.jpg" alt="Jacques Cousteau">
         <div class="profile__info">
-          <h2 class="profile__info-name">Jacques Cousteau</h2>
-          <button type="button" class="button button_info"></button>
+          <h1 class="profile__info-name">Jacques Cousteau</h1>
+          <button type="button" class="button button_location_info"></button>
           <p class="profile__info-about-me">Explorer</p>
         </div>
-        <button type="button" class="button button_add-photo">
-          <img src="./images/add-button.svg" alt="plus sign add button" class="button_location_profile-img">
-        </button>
+        <button type="button" class="button button_location_add-photo"></button>
       </section>
-      <section>
-        <ul class="elements">
+      <section class="elements">
+        <ul class="elements__container">
           <li class="elements__card">
             <img src="./images/yosemite.jpg" alt="River and trees in Yosemite Valley" class="elements__card-image">
             <div class="elements__card-content">
               <h2 class="elements__card-title">Yosemite Valley</h2>
-              <button type="button" class="button button_like"></button>
+              <button type="button" class="button button_location_like"></button>
             </div>
           </li>
           <li class="elements__card">
             <img src="./images/lake-louise.jpg" alt="Lake Louise and surrounding mountains" class="elements__card-image">
             <div class="elements__card-content">
               <h2 class="elements__card-title">Lake Louise</h2>
-              <button type="button" class="button button_like"></button>
+              <button type="button" class="button button_location_like"></button>
             </div>
           </li>
           <li class="elements__card">
             <img src="./images/bald-mountains.jpg" alt="Bald Mountains during sunset" class="elements__card-image">
             <div class="elements__card-content">
               <h2 class="elements__card-title">Bald Mountains</h2>
-              <button type="button" class="button button_like"></button>
+              <button type="button" class="button button_location_like"></button>
             </div>
           </li>
           <li class="elements__card">
             <img src="./images/latemar.jpg" alt="Latemar on a stary night" class="elements__card-image">
             <div class="elements__card-content">
               <h2 class="elements__card-title">Latemar</h2>
-              <button type="button" class="button button_like"></button>
+              <button type="button" class="button button_location_like"></button>
             </div>
           </li>
           <li class="elements__card">
             <img src="./images/vanoise.jpg" alt="Body of water at Vanoise" class="elements__card-image">
             <div class="elements__card-content">
               <h2 class="elements__card-title">Vanoise National Park</h2>
-              <button type="button" class="button button_like"></button>
+              <button type="button" class="button button_location_like"></button>
             </div>
           </li>
           <li class="elements__card">
             <img src="./images/lago.jpg" alt="Boats docked at a pier in Lage di Braies" class="elements__card-image">
             <div class="elements__card-content">
               <h2 class="elements__card-title">Lago di Braies</h2>
-              <button type="button" class="button button_like"></button>
+              <button type="button" class="button button_location_like"></button>
             </div>
           </li>
         </ul>
       </section>
     </main>
     <footer class="footer">
-      <h2 class="footer__copyright">© 2021 Around The U.S.</h2>
+      <p class="footer__copyright">© 2021 Around The U.S.</p>
     </footer>
     <div class="popup">
       <div class="popup__content">
-        <button type="button" class="button button_close"></button>
+        <button type="button" class="button button_location_close"></button>
         <h2 class="popup__header">Edit profile</h2>
-        <form class="edit-form">
-          <input class="edit-form__input edit-form__input_name" value="Jacques Cousteau" type="text" name="name">
-          <input class="edit-form__input edit-form__input_about-me" value="Explorer" type="text" name="about">
-          <button class="button button_submit" type="submit">Save</button>
+        <form class="edit-form" name="edit-form">
+          <input class="edit-form__input edit-form__input_location_name" value="Jacques Cousteau" type="text" name="name">
+          <input class="edit-form__input edit-form__input_location_about-me" value="Explorer" type="text" name="about">
+          <button class="button button_location_submit" type="submit">Save</button>
         </form>
       </div>
     </div>
