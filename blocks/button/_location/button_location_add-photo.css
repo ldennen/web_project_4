@@ -14,13 +14,7 @@
   opacity: 0.6;
 }
 
-@media screen and (max-width: 768px) {
-  .button_location_add-photo {
-    max-width: 100px;
-  }
-}
-
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 706px) {
   .button_location_add-photo {
     max-width: 100%;
   }

@@ -9,9 +9,11 @@
   overflow: hidden;
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 706px) {
   .profile__info-about-me {
     justify-self: center;
+    width: 88.125%;
+    text-align: center;
   }
 }
 
