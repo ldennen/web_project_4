@@ -21,50 +21,7 @@
         <button type="button" class="button button_location_add-photo"></button>
       </section>
       <section class="elements">
-        <ul class="elements__container">
-          <li class="elements__card">
-            <img src="./images/yosemite.jpg" alt="River and trees in Yosemite Valley" class="elements__card-image">
-            <div class="elements__card-content">
-              <h2 class="elements__card-title">Yosemite Valley</h2>
-              <button type="button" class="button button_location_like"></button>
-            </div>
-          </li>
-          <li class="elements__card">
-            <img src="./images/lake-louise.jpg" alt="Lake Louise and surrounding mountains" class="elements__card-image">
-            <div class="elements__card-content">
-              <h2 class="elements__card-title">Lake Louise</h2>
-              <button type="button" class="button button_location_like"></button>
-            </div>
-          </li>
-          <li class="elements__card">
-            <img src="./images/bald-mountains.jpg" alt="Bald Mountains during sunset" class="elements__card-image">
-            <div class="elements__card-content">
-              <h2 class="elements__card-title">Bald Mountains</h2>
-              <button type="button" class="button button_location_like"></button>
-            </div>
-          </li>
-          <li class="elements__card">
-            <img src="./images/latemar.jpg" alt="Latemar on a stary night" class="elements__card-image">
-            <div class="elements__card-content">
-              <h2 class="elements__card-title">Latemar</h2>
-              <button type="button" class="button button_location_like"></button>
-            </div>
-          </li>
-          <li class="elements__card">
-            <img src="./images/vanoise.jpg" alt="Body of water at Vanoise" class="elements__card-image">
-            <div class="elements__card-content">
-              <h2 class="elements__card-title">Vanoise National Park</h2>
-              <button type="button" class="button button_location_like"></button>
-            </div>
-          </li>
-          <li class="elements__card">
-            <img src="./images/lago.jpg" alt="Boats docked at a pier in Lage di Braies" class="elements__card-image">
-            <div class="elements__card-content">
-              <h2 class="elements__card-title">Lago di Braies</h2>
-              <button type="button" class="button button_location_like"></button>
-            </div>
-          </li>
-        </ul>
+        <ul class="elements__container"></ul>
       </section>
     </main>
     <footer class="footer">
@@ -81,6 +38,15 @@
         </form>
       </div>
     </div>
+    <template id="card-template">
+      <li class="elements__card">
+        <img class="elements__card-image">
+        <div class="elements__card-content">
+          <h2 class="elements__card-title"></h2>
+          <button type="button" class="button button_location_like"></button>
+        </div>
+      </li>
+    </template>
     <script src="./scripts/script.js"></script>
   </body>
 </html>
