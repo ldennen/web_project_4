@@ -56,6 +56,7 @@ function generateCard(card) {
   const cardEl = cardTemplate.cloneNode(true);
   cardEl.querySelector('.elements__card-title').textContent = card.name;
   cardEl.querySelector('.elements__card-image').setAttribute("src", card.link);
+  
   return cardEl;
 }
 
@@ -67,14 +68,6 @@ function closePopup() {
   popupEl.classList.remove('popup_open');
 }
 
-//function togglePopup() {
-//  if (!popupEl.classList.contains('popup_open')) {
-//    editFormNameInput.value = profileNameEl.textContent;
-//    editFormAbtInput.value = profileAbtEl.textContent;
-//  }
-//
-//  popupEl.classList.toggle('popup_open');
-//}
 
 function togglePopup(popup) {
   popup.classList.toggle('popup_open');
