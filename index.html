@@ -27,7 +27,7 @@
     <footer class="footer">
       <p class="footer__copyright">© 2021 Around The U.S.</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup_type_edit">
       <div class="popup__content">
         <button type="button" class="button button_location_close"></button>
         <h2 class="popup__header">Edit profile</h2>
@@ -35,6 +35,17 @@
           <input class="edit-form__input edit-form__input_location_name" value="Jacques Cousteau" type="text" name="name">
           <input class="edit-form__input edit-form__input_location_about-me" value="Explorer" type="text" name="about">
           <button class="button button_location_submit" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_type_add">
+      <div class="popup__content">
+        <button type="button" class="button button_location_close"></button>
+        <h2 class="popup__header">New place</h2>
+        <form class="edit-form" name="edit-form">
+          <input class="edit-form__input edit-form__input_type_title" type="text" placeholder="Title">
+          <input class="edit-form__input edit-form__input_type_link" type="text" placeholder="Image link">
+          <button class="button button_location_submit" type="submit">Create</button>
         </form>
       </div>
     </div>
