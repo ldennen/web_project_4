@@ -33,14 +33,18 @@ const profileAbtEl = document.querySelector('.profile__info-about-me');
 const popupEl = document.querySelector('.popup');
 const editPopup = document.querySelector('.popup_type_edit');
 const addPopup = document.querySelector('.popup_type_add');
+const previewImgPopup = document.querySelector('.popup_type_preview');
 const editFormEl = document.querySelector('.edit-form');
-const elementsList = document.querySelector('.elements__container')
+const elementsList = document.querySelector('.elements__container');
+const previewImgEl = document.querySelector('.popup__preview-image');
 
 //Buttons
 const editInfoBtn = document.querySelector('.button_location_info');
 const editPopupCloseBtn = editPopup.querySelector('.button_location_close');
 const addPopupCloseBtn = addPopup.querySelector('.button_location_close');
+const previewImgCloseBtn = previewImgPopup.querySelector('.button_location_close');
 const addImgBtn = document.querySelector('.button_location_add-photo');
+
 
 //Inputs
 const editFormNameInput = document.querySelector('.edit-form__input_location_name');
@@ -55,8 +59,13 @@ const cardTemplate = document
 function generateCard(card) {
   const cardEl = cardTemplate.cloneNode(true);
   cardEl.querySelector('.elements__card-title').textContent = card.name;
-  cardEl.querySelector('.elements__card-image').setAttribute("src", card.link);
   
+  const imageEl = cardEl.querySelector('.elements__card-image');
+  imageEl.setAttribute("src", card.link);
+  imageEl.addEventListener('click', function() {
+    previewImgEl.src = card.link;
+    togglePopup(previewImgPopup);
+  })
   return cardEl;
 }
 
@@ -68,7 +77,6 @@ function closePopup() {
   popupEl.classList.remove('popup_open');
 }
 
-
 function togglePopup(popup) {
   popup.classList.toggle('popup_open');
 }
@@ -78,7 +86,7 @@ editInfoBtn.addEventListener('click', () => togglePopup(editPopup));
 editPopupCloseBtn.addEventListener('click', () => togglePopup(editPopup));
 addImgBtn.addEventListener('click', () => togglePopup(addPopup));
 addPopupCloseBtn.addEventListener('click', () => togglePopup(addPopup));
-
+previewImgCloseBtn.addEventListener('click', () => togglePopup(previewImgPopup));
 
 editFormEl.addEventListener('submit', function(event) {
   event.preventDefault();
