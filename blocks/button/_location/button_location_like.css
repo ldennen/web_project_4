@@ -8,3 +8,7 @@
 .button_location_like:hover {
   opacity: 0.5;
 }
+
+.button_location_like:active {
+  fill: #000;
+}

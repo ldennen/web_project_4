@@ -13,8 +13,8 @@
 @import url(../blocks/button/_location/button_location_close.css);
 @import url(../blocks/button/_location/button_location_submit.css);
 @import url(../blocks/button/_location/button_location_add-photo.css);
+@import url(../blocks/button/_location/button_location_trash.css);
 @import url(../blocks/button/_location/button_location_like.css);
-@import url(../blocks/button/_location/button_location_like-active.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_open/popup_open.css);
 @import url(../blocks/popup/__content/popup__content.css);

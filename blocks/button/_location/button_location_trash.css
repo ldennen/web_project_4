@@ -1,0 +1,13 @@
+.button_location_trash {
+  background-image: url('../../../images/trash-button.svg');
+  width: 18px;
+  height: 19.3px;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  transition: opacity .25s ease-out;
+}
+
+.button_location_trash:hover {
+  opacity: 0.6;
+}

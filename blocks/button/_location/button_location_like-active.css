@@ -1,3 +1,5 @@
 .button_location_like-active {
-  background-image: url(../../../images/like-button-active.svg);
+  background-image: url('../../../images/like-button-active.svg');
+  width: 21px;
+  height: 19px;
 }

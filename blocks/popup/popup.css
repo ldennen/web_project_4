@@ -7,5 +7,8 @@
   background-color: rgba(0, 0, 0, .5);
   display: flex;
   z-index: 1;
-  display: none;
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: visibility 0s linear .25s, opacity .25s linear;
 }
