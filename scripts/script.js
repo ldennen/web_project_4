@@ -58,12 +58,18 @@ const cardTemplate = document
   .content.querySelector('.elements__card');
 
 //Like button toggle
-function likeBtnActive(likeBtn) {
-  likeBtn.classList.toggle('button_location_like-active');
+function likeBtnActive(event) {
+  event.classList.toggle('button_location_like-active');
 };
 
+//Add new card
 function renderNewCard(card) {
   elementsList.prepend(generateCard(card));
+}
+
+//Delete card
+function deleteImg(event) {
+  event.target.closest(".elements__card").remove();
 }
 
 //Generate card
@@ -80,7 +86,13 @@ function generateCard(card) {
   });
 
   const likeBtn = cardEl.querySelector('.button_location_like');
-  likeBtn.addEventListener('click', likeBtnActive);
+  likeBtn.addEventListener('click', (event) => {
+    const likeBtn = event.target;
+    likeBtnActive(likeBtn);
+  });
+
+  const deleteBtn = cardEl.querySelector('.button_location_trash');
+  deleteBtn.addEventListener('click', deleteImg);
   return cardEl;
 }
 
@@ -101,7 +113,7 @@ addImgBtn.addEventListener('click', () => togglePopup(addPopup));
 addPopupCloseBtn.addEventListener('click', () => togglePopup(addPopup));
 previewImgCloseBtn.addEventListener('click', () => togglePopup(previewImgPopup));
 
-//Form
+//Forms
 editFormEl.addEventListener('submit', function(event) {
   event.preventDefault();
   profileNameEl.textContent = editFormNameInput.value;
