@@ -1,7 +1,6 @@
 .elements__card-image {
   object-fit: cover;
   display: block;
-  width: 100%;
   flex-grow: 1;
   overflow: hidden;
   height: 282px;
