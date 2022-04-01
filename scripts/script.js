@@ -28,6 +28,7 @@ const initialCards = [
 //Text content
 const profileNameEl = document.querySelector('.profile__info-name');
 const profileAbtEl = document.querySelector('.profile__info-about-me');
+const imgPopupTitle = document.querySelector('.popup__title');
 
 //Wrappers
 const popupEl = document.querySelector('.popup');
@@ -82,6 +83,8 @@ function generateCard(card) {
   imageEl.src = card.link;
   imageEl.addEventListener('click', function() {
     previewImgEl.src = card.link;
+    previewImgEl.alt = card.name;
+    imgPopupTitle.textContent = card.name;
     togglePopup(previewImgPopup);
   });
 

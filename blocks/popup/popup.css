@@ -11,4 +11,5 @@
   pointer-events: none;
   opacity: 0;
   transition: visibility 0s linear .25s, opacity .25s linear;
+  flex-direction: column;
 }
