@@ -59,8 +59,8 @@ const cardTemplate = document
   .content.querySelector('.elements__card');
 
 //Like button toggle
-function likeBtnActive(event) {
-  event.classList.toggle('button_location_like-active');
+function toggleLikeButton(likeButton) {
+  likeButton.classList.toggle('button_location_like-active');
 };
 
 //Add new card
@@ -91,7 +91,7 @@ function generateCard(card) {
   const likeBtn = cardEl.querySelector('.button_location_like');
   likeBtn.addEventListener('click', (event) => {
     const likeBtn = event.target;
-    likeBtnActive(likeBtn);
+    toggleLikeButton(likeBtn);
   });
 
   const deleteBtn = cardEl.querySelector('.button_location_trash');
@@ -131,6 +131,7 @@ addFormEl.addEventListener('submit', function(event) {
   card.link = addFormLinkInput.value;
   renderNewCard(card);
   togglePopup(addPopup);
+  addFormEl.reset();
 });
 
 //Generate and add cards
