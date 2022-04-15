@@ -31,10 +31,30 @@
       <div class="popup__content">
         <button type="button" class="button button_location_close"></button>
         <h2 class="popup__header">Edit profile</h2>
-        <form class="edit-form" name="edit-form">
-          <input class="edit-form__input edit-form__input_location_name" value="Jacques Cousteau" type="text" name="name" required>
-          <input class="edit-form__input edit-form__input_location_about-me" value="Explorer" type="text" name="about" required>
-          <button class="button button_location_submit" type="submit">Save</button>
+        <form class="edit-form popup__form" name="edit-form">
+          <input 
+            id="name-input"
+            class="edit-form__input edit-form__input_location_name popup__input" 
+            value="Jacques Cousteau" 
+            type="text" 
+            name="name"
+            minlength="2"
+            maxlength="40" 
+            required
+          >
+          <span class="popup__error" id="name-input-error"></span>
+          <input
+            id="about-input" 
+            class="edit-form__input edit-form__input_location_about-me popup__input" 
+            value="Explorer" 
+            type="text" 
+            name="about"
+            minlength="2"
+            maxlength="200" 
+            required
+          >
+          <span class="popup__error" id="about-input-error"></span>
+          <button class="button button_location_submit popup__button" type="submit">Save</button>
         </form>
       </div>
     </div>
@@ -42,10 +62,26 @@
       <div class="popup__content">
         <button type="button" class="button button_location_close"></button>
         <h2 class="popup__header">New place</h2>
-        <form class="edit-form" name="edit-form">
-          <input class="edit-form__input edit-form__input_type_title" type="text" placeholder="Title" required>
-          <input class="edit-form__input edit-form__input_type_link" type="text" placeholder="Image link" required>
-          <button class="button button_location_submit" type="submit">Create</button>
+        <form class="edit-form popup__form" name="edit-form">
+          <input 
+            id="title-input"
+            class="edit-form__input edit-form__input_type_title popup__input" 
+            type="text" 
+            placeholder="Title"
+            minlength="1"
+            maxlength="30" 
+            required
+          >
+          <span class="popup__error" id="title-input-error"></span>
+          <input 
+            id="url-input"
+            class="edit-form__input edit-form__input_type_link popup__input" 
+            type="url" 
+            placeholder="Image link" 
+            required
+          >
+          <span class="popup__error" id="url-input-error"></span>
+          <button class="button button_location_submit popup__button" type="submit">Create</button>
         </form>
       </div>
     </div>
@@ -66,6 +102,7 @@
         </div>
       </li>
     </template>
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/script.js"></script>
   </body>
 </html>
