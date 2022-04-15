@@ -39,6 +39,7 @@ const editFormEl = document.querySelector('.edit-form');
 const addFormEl = addPopup.querySelector('.edit-form');
 const elementsList = document.querySelector('.elements__container');
 const previewImgEl = document.querySelector('.popup__preview-image');
+const overlayEl = Array.from(document.querySelectorAll('.popup'))
 
 //Buttons
 const editInfoBtn = document.querySelector('.button_location_info');
@@ -85,7 +86,7 @@ function generateCard(card) {
     previewImgEl.src = card.link;
     previewImgEl.alt = card.name;
     imgPopupTitle.textContent = card.name;
-    togglePopup(previewImgPopup);
+    openPopup(previewImgPopup);
   });
 
   const likeBtn = cardEl.querySelector('.button_location_like');
@@ -104,24 +105,42 @@ function renderCard(card, container) {
   container.append(card);
 }
 
-//Toggle popups
-function togglePopup(popup) {
-  popup.classList.toggle('popup_open');
+//Open/close popup methods
+function openPopup(popup) {
+  popup.classList.add('popup_open');
+  document.addEventListener('keyup', escapePopup);
 }
 
+function closePopup(popup) {
+  popup.classList.remove('popup_open');
+  document.removeEventListener('keyup', escapePopup);
+}
+
+overlayEl.forEach((overlay) => {
+  overlay.addEventListener('click', (event) => {
+    closePopup(event.target);
+  });
+});
+
+function escapePopup(event) {
+  if (event.key === "Escape") {
+    closePopup(popupEl);
+  };
+};
+
 //Event Listeners
-editInfoBtn.addEventListener('click', () => togglePopup(editPopup));
-editPopupCloseBtn.addEventListener('click', () => togglePopup(editPopup));
-addImgBtn.addEventListener('click', () => togglePopup(addPopup));
-addPopupCloseBtn.addEventListener('click', () => togglePopup(addPopup));
-previewImgCloseBtn.addEventListener('click', () => togglePopup(previewImgPopup));
+editInfoBtn.addEventListener('click', () => openPopup(editPopup));
+editPopupCloseBtn.addEventListener('click', () => closePopup(editPopup));
+addImgBtn.addEventListener('click', () => openPopup(addPopup));
+addPopupCloseBtn.addEventListener('click', () => closePopup(addPopup));
+previewImgCloseBtn.addEventListener('click', () => closePopup(previewImgPopup));
 
 //Forms
 editFormEl.addEventListener('submit', function(event) {
   event.preventDefault();
   profileNameEl.textContent = editFormNameInput.value;
   profileAbtEl.textContent = editFormAbtInput.value;
-  togglePopup(editPopup);
+  closePopup(editPopup);
 });
 
 addFormEl.addEventListener('submit', function(event) {
@@ -130,7 +149,7 @@ addFormEl.addEventListener('submit', function(event) {
   card.name = addFormTitleInput.value;
   card.link = addFormLinkInput.value;
   renderNewCard(card);
-  togglePopup(addPopup);
+  closePopup(addPopup);
   addFormEl.reset();
 });
 
