@@ -132,7 +132,7 @@ function escapePopup(event) {
 //Event Listeners
 editInfoBtn.addEventListener('click', () => openPopup(editPopup));
 editPopupCloseBtn.addEventListener('click', () => closePopup(editPopup));
-addImgBtn.addEventListener('click', () => toggleButton(addPopup));
+addImgBtn.addEventListener('click', () => openPopup(addPopup));
 addPopupCloseBtn.addEventListener('click', () => closePopup(addPopup));
 previewImgCloseBtn.addEventListener('click', () => closePopup(previewImgPopup));
 
