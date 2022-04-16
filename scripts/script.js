@@ -39,7 +39,7 @@ const editFormEl = document.querySelector('.edit-form');
 const addFormEl = addPopup.querySelector('.edit-form');
 const elementsList = document.querySelector('.elements__container');
 const previewImgEl = document.querySelector('.popup__preview-image');
-const overlayEl = Array.from(document.querySelectorAll('.popup'))
+const overlayEl = Array.from(document.querySelectorAll('.popup'));
 
 //Buttons
 const editInfoBtn = document.querySelector('.button_location_info');
@@ -124,14 +124,15 @@ overlayEl.forEach((overlay) => {
 
 function escapePopup(event) {
   if (event.key === "Escape") {
-    closePopup(popupEl);
+    const openedPopup = document.querySelector('.popup_open');
+    closePopup(openedPopup);
   };
 };
 
 //Event Listeners
 editInfoBtn.addEventListener('click', () => openPopup(editPopup));
 editPopupCloseBtn.addEventListener('click', () => closePopup(editPopup));
-addImgBtn.addEventListener('click', () => openPopup(addPopup));
+addImgBtn.addEventListener('click', () => toggleButton(addPopup));
 addPopupCloseBtn.addEventListener('click', () => closePopup(addPopup));
 previewImgCloseBtn.addEventListener('click', () => closePopup(previewImgPopup));
 
