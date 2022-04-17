@@ -56,17 +56,6 @@ const enableValidation = (settings) => {
   });  
 };
 
-export function resetValidation(form) {
-  const formInputEl = form.querySelectorAll(settings.inputSelector);
-  const formButton = form.querySelector(settings.submitButtonSelector);
-
-  formInputEl.forEach((element) => {
-    hideInputError(form,element,settings);
-  });
-
-  toggleButtonState(formInputEl, formButton, settings,);
-}
-
 enableValidation({
   formSelector: ".popup__form",
   inputSelector: ".popup__input",

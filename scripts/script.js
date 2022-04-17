@@ -1,5 +1,3 @@
-import { resetValidation } from './validate.js';
-
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -114,11 +112,6 @@ function openPopup(popup) {
   document.addEventListener('keyup', escapePopup);
 }
 
-addImgBtn.addEventListener('click', () => {
-  resetValidation(addFormEl);
-  openPopup(addPopup);
-});
-
 function closePopup(popup) {
   popup.classList.remove('popup_open');
   document.removeEventListener('keyup', escapePopup);
@@ -140,7 +133,7 @@ function escapePopup(event) {
 //Event Listeners
 editInfoBtn.addEventListener('click', () => openPopup(editPopup));
 editPopupCloseBtn.addEventListener('click', () => closePopup(editPopup));
-
+addImgBtn.addEventListener('click', () => openPopup(addPopup));
 addPopupCloseBtn.addEventListener('click', () => closePopup(addPopup));
 previewImgCloseBtn.addEventListener('click', () => closePopup(previewImgPopup));
 
