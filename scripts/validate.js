@@ -30,10 +30,14 @@ const toggleButton = (inputList, button, settings) => {
     button.disabled = false;
     button.classList.remove(settings.inactiveButtonClass);
   } else {
-    button.disabled = true;
-    button.classList.add(settings.inactiveButtonClass);
+    disableSubmitButton(button, 'popup__button_disabled');
   }
 };
+
+const disableSubmitButton = (button, inactiveButtonClass) => {
+  button.disabled = true;
+  button.classList.add(inactiveButtonClass);
+}
 
 const setEventListeners = (formEl, settings) => {
   const inputList = [...formEl.querySelectorAll(settings.inputSelector)];

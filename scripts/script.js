@@ -47,6 +47,7 @@ const editPopupCloseBtn = editPopup.querySelector('.button_location_close');
 const addPopupCloseBtn = addPopup.querySelector('.button_location_close');
 const previewImgCloseBtn = previewImgPopup.querySelector('.button_location_close');
 const addImgBtn = document.querySelector('.button_location_add-photo');
+const addFormSubmitButton = addFormEl.querySelector('.button_location_submit')
 
 //Inputs
 const editFormNameInput = document.querySelector('.edit-form__input_location_name');
@@ -108,6 +109,7 @@ function renderCard(card, container) {
 
 //Open/close popup methods
 function openPopup(popup) {
+  disableSubmitButton(addFormSubmitButton, 'popup__button_disabled');
   popup.classList.add('popup_open');
   document.addEventListener('keyup', escapePopup);
 }
