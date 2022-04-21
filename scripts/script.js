@@ -109,7 +109,9 @@ function renderCard(card, container) {
 
 //Open/close popup methods
 function openPopup(popup) {
-  disableSubmitButton(addFormSubmitButton, 'popup__button_disabled');
+  if(addFormEl) {
+    disableSubmitButton(addFormSubmitButton, 'popup__button_disabled');
+  }
   popup.classList.add('popup_open');
   document.addEventListener('keyup', escapePopup);
 }
