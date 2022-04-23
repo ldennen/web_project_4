@@ -109,9 +109,6 @@ function renderCard(card, container) {
 
 //Open/close popup methods
 function openPopup(popup) {
-  if(addFormEl) {
-    disableSubmitButton(addFormSubmitButton, 'popup__button_disabled');
-  }
   popup.classList.add('popup_open');
   document.addEventListener('keyup', escapePopup);
 }
@@ -137,7 +134,10 @@ function escapePopup(event) {
 //Event Listeners
 editInfoBtn.addEventListener('click', () => openPopup(editPopup));
 editPopupCloseBtn.addEventListener('click', () => closePopup(editPopup));
-addImgBtn.addEventListener('click', () => openPopup(addPopup));
+addImgBtn.addEventListener('click', () => {
+  disableSubmitButton(addFormSubmitButton, 'popup__button_disabled');
+  openPopup(addPopup);
+});
 addPopupCloseBtn.addEventListener('click', () => closePopup(addPopup));
 previewImgCloseBtn.addEventListener('click', () => closePopup(previewImgPopup));
 
