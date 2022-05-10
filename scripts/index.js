@@ -88,9 +88,6 @@ initialCards.forEach((card) => {
   renderCard(card, elementsList);
 });
 
-
-
-
 //Close popup methods
 overlayEl.forEach((overlay) => {
   overlay.addEventListener('click', (event) => {
@@ -109,7 +106,7 @@ function escapePopup(event) {
 editInfoBtn.addEventListener('click', () => openPopup(editPopup));
 editPopupCloseBtn.addEventListener('click', () => closePopup(editPopup));
 addImgBtn.addEventListener('click', () => {
-  disableSubmitButton(addFormSubmitButton, 'popup__button_disabled');
+  addFormValidator.resetValidation();
   openPopup(addPopup);
 });
 addPopupCloseBtn.addEventListener('click', () => closePopup(addPopup));
