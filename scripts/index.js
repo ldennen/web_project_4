@@ -1,3 +1,7 @@
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+import { openPopup, closePopup } from './utils.js';
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -55,69 +59,39 @@ const editFormAbtInput = document.querySelector('.edit-form__input_location_abou
 const addFormTitleInput = document.querySelector('.edit-form__input_type_title');
 const addFormLinkInput = document.querySelector('.edit-form__input_type_link');
 
-//Templates
-const cardTemplate = document
-  .querySelector('#card-template')
-  .content.querySelector('.elements__card'
-);
+//Validation 
 
-//Like button toggle
-function toggleLikeButton(likeButton) {
-  likeButton.classList.toggle('button_location_like-active');
+const validationSettings = {
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible"
 };
 
+const editFormValidator = new FormValidator(validationSettings, editFormEl);
+const addFormValidator = new FormValidator(validationSettings, addFormEl);
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
+
+//Templates
+const cardSelector = '#card-template';
+
 //Add new card
-function renderNewCard(card) {
-  elementsList.prepend(generateCard(card));
-}
+const renderCard = (data, wrap) => {
+  const card = new Card(data, cardSelector);
+  wrap.prepend(card.getView());
+};
 
-//Delete card
-function deleteImg(event) {
-  event.target.closest(".elements__card").remove();
-}
+//Generate and add cards
+initialCards.forEach((card) => {
+  renderCard(card, elementsList);
+});
 
-//Generate card
-function generateCard(card) {
-  const cardEl = cardTemplate.cloneNode(true);
-  cardEl.querySelector('.elements__card-title').textContent = card.name;
-  
-  const imageEl = cardEl.querySelector('.elements__card-image');
-  imageEl.alt = card.name;
-  imageEl.src = card.link;
-  imageEl.addEventListener('click', function() {
-    previewImgEl.src = card.link;
-    previewImgEl.alt = card.name;
-    imgPopupTitle.textContent = card.name;
-    openPopup(previewImgPopup);
-  });
 
-  const likeBtn = cardEl.querySelector('.button_location_like');
-  likeBtn.addEventListener('click', (event) => {
-    const likeBtn = event.target;
-    toggleLikeButton(likeBtn);
-  });
 
-  const deleteBtn = cardEl.querySelector('.button_location_trash');
-  deleteBtn.addEventListener('click', deleteImg);
-  return cardEl;
-}
 
-//Render cards list
-function renderCard(card, container) {
-  container.append(card);
-}
-
-//Open/close popup methods
-function openPopup(popup) {
-  popup.classList.add('popup_open');
-  document.addEventListener('keyup', escapePopup);
-}
-
-function closePopup(popup) {
-  popup.classList.remove('popup_open');
-  document.removeEventListener('keyup', escapePopup);
-}
-
+//Close popup methods
 overlayEl.forEach((overlay) => {
   overlay.addEventListener('click', (event) => {
     closePopup(event.target);
@@ -154,13 +128,9 @@ addFormEl.addEventListener('submit', function(event) {
   const card = {};
   card.name = addFormTitleInput.value;
   card.link = addFormLinkInput.value;
-  renderNewCard(card);
+  renderCard(card, elementsList);
   closePopup(addPopup);
   addFormEl.reset();
 });
 
-//Generate and add cards
-initialCards.forEach(function (card) {
-  const newCard = generateCard(card);
-  renderCard(newCard, elementsList);
-});
+export { escapePopup, imgPopupTitle, previewImgEl, previewImgPopup };
