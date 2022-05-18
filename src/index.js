@@ -1,6 +1,6 @@
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
-import { openPopup, closePopup } from './utils.js';
+import Card from "../scripts/Card.js";
+import FormValidator from "../scripts/FormValidator.js";
+import { openPopup, closePopup } from '../scripts/utils.js';
 
 const initialCards = [
   {
@@ -28,6 +28,9 @@ const initialCards = [
     link: "https://code.s3.yandex.net/web-code/lago.jpg"
   }
 ];
+
+let someStr = "I coded. I saved. I bundled.";
+ 
 
 //Text content
 const profileNameEl = document.querySelector('.profile__info-name');
