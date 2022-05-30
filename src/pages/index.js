@@ -1,6 +1,6 @@
-import Card from "../scripts/Card.js";
-import FormValidator from "../scripts/FormValidator.js";
-import { openPopup, closePopup } from '../scripts/utils.js';
+import Card from "../scripts/components/Card.js";
+import FormValidator from "../scripts/components/FormValidator.js";
+import { openPopup, closePopup } from '../scripts/utils/utils.js';
 
 const initialCards = [
   {
@@ -29,8 +29,6 @@ const initialCards = [
   }
 ];
 
-let someStr = "I coded. I saved. I bundled.";
- 
 
 //Text content
 const profileNameEl = document.querySelector('.profile__info-name');
