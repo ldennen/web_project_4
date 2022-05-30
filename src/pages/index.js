@@ -1,6 +1,8 @@
-import Card from "../scripts/components/Card.js";
-import FormValidator from "../scripts/components/FormValidator.js";
-import { openPopup, closePopup } from '../scripts/utils/utils.js';
+import "./index.css";
+
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import { openPopup, closePopup } from '../utils/utils.js';
 
 const initialCards = [
   {

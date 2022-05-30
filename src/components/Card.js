@@ -1,5 +1,5 @@
 import { openPopup } from '../utils/utils.js';
-import { previewImgEl, imgPopupTitle, previewImgPopup} from '../../pages/index.js';
+import { previewImgEl, imgPopupTitle, previewImgPopup} from '../../src/pages/index.js';
 
 class Card {
   constructor(data, cardSelector) {

@@ -1,4 +1,4 @@
-import { escapePopup } from '../../pages/index.js';
+import { escapePopup } from '../../src/pages/index.js';
 
 function openPopup(popup) {
   popup.classList.add('popup_open');

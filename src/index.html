@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Around The U.S.</title> 
-    <link rel="stylesheet" href="./pages/index.css">
   </head>
   <body class="page">
     <header class="header">
-      <img alt="Around the U.S. logo" class="header__logo" src="./images/header__logo.svg">
+      <img alt="Around the U.S. logo" class="header__logo" src="<%=require('./images/header__logo.svg')%>">
     </header>
     <main>
       <section class="profile">
-        <img class="profile__avatar" src="./images/jacques-costeau.jpg" alt="Jacques Cousteau">
+        <img class="profile__avatar" src="<%=require('./images/jacques-costeau.jpg')%>" alt="Jacques Cousteau">
         <div class="profile__info">
           <h1 class="profile__info-name">Jacques Cousteau</h1>
           <button type="button" class="button button_location_info"></button>
@@ -102,9 +101,5 @@
         </div>
       </li>
     </template>
-    <script type="module" src="./pages/index.js"></script>
-    <script type="module" src="./scripts/components/FormValidator.js"></script>
-    <script type="module" src="./scripts/components/Card.js"></script>
-    <script type="module" src="./scripts/utils/utils.js"></script>
   </body>
 </html>
