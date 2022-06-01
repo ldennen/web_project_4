@@ -1,11 +1,9 @@
-import { openPopup } from '../utils/utils.js';
-import { previewImgEl, imgPopupTitle, previewImgPopup} from '../../src/pages/index.js';
-
 class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _setEventListeners() {
@@ -17,10 +15,7 @@ class Card {
       .querySelector('.button_location_trash').addEventListener('click', (evt) => {
         this._handleDeleteCard(evt);
       });
-    this._element
-      .querySelector('.elements__card-image').addEventListener('click', () => {
-        this._handlePreviewPicture();
-      });
+    this._imageElement.addEventListener('click', this._handleCardClick);
   }
 
   _handleLikeIcon(evt) {
@@ -31,13 +26,6 @@ class Card {
     evt.target.closest('.elements__card').remove();
   }
 
-  _handlePreviewPicture() {
-    previewImgEl.src = this._link;
-    previewImgEl.alt = this._name;
-    imgPopupTitle.textContent = this._name;
-    openPopup(previewImgPopup);
-  }
-
   _getTemplate() {
     const cardElement = document.querySelector(this._cardSelector).content.querySelector('.elements__card').cloneNode(true);
     return cardElement;
@@ -46,7 +34,7 @@ class Card {
   //Generate Card
   getView() {
     this._element = this._getTemplate();
-    const imageElement = this._element.querySelector('.elements__card-image');
+    this._imageElement = this._element.querySelector('.elements__card-image');
     imageElement.alt = this._name;
     imageElement.src = this._link;
     const cardTitle = this._element.querySelector('.elements__card-title');

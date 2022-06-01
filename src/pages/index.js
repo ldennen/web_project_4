@@ -1,136 +1,92 @@
 import "./index.css";
-
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-import { openPopup, closePopup } from '../utils/utils.js';
+import Popup from "../components/Popup.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+import {
+  validationSettings,
+  initialCards,
+  editFormEl,
+  addFormEl,
+  profileNameEl,
+  profileAbtEl,
+  editFormNameInput,
+  editFormAbtInput,
+  cardSelector,
+  editInfoBtn
+} from "../utils/constants.js";
 
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
-  },
-  {
-    name: "Lake Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg"
-  }
-];
-
-
-//Text content
-const profileNameEl = document.querySelector('.profile__info-name');
-const profileAbtEl = document.querySelector('.profile__info-about-me');
-const imgPopupTitle = document.querySelector('.popup__title');
-
-//Wrappers
-const popupEl = document.querySelector('.popup');
-const editPopup = document.querySelector('.popup_type_edit');
-const addPopup = document.querySelector('.popup_type_add');
-const previewImgPopup = document.querySelector('.popup_type_preview');
-const editFormEl = document.querySelector('.edit-form');
-const addFormEl = addPopup.querySelector('.edit-form');
-const elementsList = document.querySelector('.elements__container');
-const previewImgEl = document.querySelector('.popup__preview-image');
-const overlayEl = Array.from(document.querySelectorAll('.popup'));
-
-//Buttons
-const editInfoBtn = document.querySelector('.button_location_info');
-const editPopupCloseBtn = editPopup.querySelector('.button_location_close');
-const addPopupCloseBtn = addPopup.querySelector('.button_location_close');
-const previewImgCloseBtn = previewImgPopup.querySelector('.button_location_close');
-const addImgBtn = document.querySelector('.button_location_add-photo');
-const addFormSubmitButton = addFormEl.querySelector('.button_location_submit')
-
-//Inputs
-const editFormNameInput = document.querySelector('.edit-form__input_location_name');
-const editFormAbtInput = document.querySelector('.edit-form__input_location_about-me');
-const addFormTitleInput = document.querySelector('.edit-form__input_type_title');
-const addFormLinkInput = document.querySelector('.edit-form__input_type_link');
-
-//Validation 
-
-const validationSettings = {
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible"
-};
-
+//Form Validation
 const editFormValidator = new FormValidator(validationSettings, editFormEl);
 const addFormValidator = new FormValidator(validationSettings, addFormEl);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
-//Templates
-const cardSelector = '#card-template';
-
-//Add new card
-const renderCard = (data, wrap) => {
-  const card = new Card(data, cardSelector);
-  wrap.prepend(card.getView());
-};
-
-//Generate and add cards
-initialCards.forEach((card) => {
-  renderCard(card, elementsList);
+//Profile functions
+const editUserInfoForm = new PopupWithForm({
+  popupSelector: '.popup_type_edit'
+  handleFormSubmit: getEditFormValues
 });
+editUserInfoForm.setEventListeners();
 
-//Close popup methods
-overlayEl.forEach((overlay) => {
-  overlay.addEventListener('click', (event) => {
-    closePopup(event.target);
-  });
-});
+function openEditForm() {
+  getEditFormValues();
+  editFormValidator.resetValidation();
+  editUserInfoForm.open();
+}
 
-function escapePopup(event) {
-  if (event.key === "Escape") {
-    const openedPopup = document.querySelector('.popup_open');
-    closePopup(openedPopup);
-  };
-};
-
-//Event Listeners
-editInfoBtn.addEventListener('click', () => openPopup(editPopup));
-editPopupCloseBtn.addEventListener('click', () => closePopup(editPopup));
-addImgBtn.addEventListener('click', () => {
-  addFormValidator.resetValidation();
-  openPopup(addPopup);
-});
-addPopupCloseBtn.addEventListener('click', () => closePopup(addPopup));
-previewImgCloseBtn.addEventListener('click', () => closePopup(previewImgPopup));
-
-//Forms
-editFormEl.addEventListener('submit', function(event) {
-  event.preventDefault();
+function getEditFormValues() {
   profileNameEl.textContent = editFormNameInput.value;
   profileAbtEl.textContent = editFormAbtInput.value;
-  closePopup(editPopup);
+}
+
+//User Info
+const user = new UserInfo({
+  userNameSelector: '.profile__info-name',
+  userInfoSelector: '.profile__info-about-me'
 });
 
-addFormEl.addEventListener('submit', function(event) {
-  event.preventDefault();
-  const card = {};
-  card.name = addFormTitleInput.value;
-  card.link = addFormLinkInput.value;
-  renderCard(card, elementsList);
-  closePopup(addPopup);
-  addFormEl.reset();
+//New Image Functions
+const addImageForm = new PopupWithForm({
+  popupSelector: '.popup_type_add',
+  handleFormSubmit: (data) => {
+    renderCards(data);
+  }
 });
+addImageForm.setEventListeners();
 
-export { escapePopup, imgPopupTitle, previewImgEl, previewImgPopup };
+function openImageForm() {
+  addImageForm.reset();
+  addFormValidator.resetValidation();
+  addPopup.open();
+}
+
+//Render Cards
+const previewImgPopup = new PopupWithImage('.popup_type_preview');
+
+function renderCards(data) {
+  const card = new Card({
+    data,
+    handleCardClick: () => {
+      previewImgPopup.open(data);
+    },
+    cardSelector
+  });
+  const cardElement = card.getView();
+  cardList.addItem(cardElement);
+}
+
+//Inital Cards
+const cardList = new Section({ 
+  items: initialCards,
+  renderer: renderCards},
+  containerSelector: '.elements__container'
+);
+cardList.renderItems();
+
+//Event Listeners
+editInfoBtn.addEventListener('click', openEditForm);
+addImgBtn.addEventListener('click', openImageForm);
