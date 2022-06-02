@@ -67,25 +67,25 @@ function openImageForm() {
 //Render Cards
 const previewImgPopup = new PopupWithImage('.popup_type_preview');
 
-function renderCards(data) {
-  const card = new Card({
-    data,
-    handleCardClick: () => {
+function renderCards(item) {
+  const newCardElement = {
+    data: item,
+    handleCardClick: (data) => {
       previewImgPopup.open(data);
-    },
-  },
-  '#card-template',
-  );
+    }
+  };
+  const card = new Card(newCardElement, '#card-template');
   const cardElement = card.getView();
   cardList.addItem(cardElement);
+  return card;
 }
 
 //Inital Cards
-const cardList = new Section({ 
-  items: initialCards,
-  renderer: renderCards,
-  containerSelector: '.elements__container',
-});
+const cardList = new Section({
+    items: initialCards,
+    renderer: renderCards,
+    containerSelector: '.elements__container',
+  });
 cardList.renderItems();
 
 //Event Listeners
