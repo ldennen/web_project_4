@@ -28,17 +28,22 @@ addFormValidator.enableValidation();
 //Profile functions
 const editUserInfoForm = new PopupWithForm({
   popupSelector: '.popup_type_edit',
-  handleFormSubmit: getEditFormValues,
+  handleFormSubmit: submitFormValues,
 });
 editUserInfoForm.setEventListeners();
 
 function openEditForm() {
-  getEditFormValues();
+  fillFormValues();
   editFormValidator.resetValidation();
   editUserInfoForm.open();
 }
 
-function getEditFormValues() {
+function fillFormValues() {
+  editFormNameInput.value = profileNameEl.textContent;
+  editFormAbtInput.value = profileAbtEl.textContent;
+}
+
+function submitFormValues() {
   profileNameEl.textContent = editFormNameInput.value;
   profileAbtEl.textContent = editFormAbtInput.value;
 }
@@ -59,22 +64,24 @@ const addImageForm = new PopupWithForm({
 addImageForm.setEventListeners();
 
 function openImageForm() {
-  addImageForm.reset();
+  addFormEl.reset();
   addFormValidator.resetValidation();
-  addPopup.open();
+  addImageForm.open();
 }
 
 //Render Cards
 const previewImgPopup = new PopupWithImage('.popup_type_preview');
+previewImgPopup.setEventListeners();
 
-function renderCards(item) {
+function renderCards(data) {
   const newCardElement = {
-    data: item,
-    handleCardClick: (data) => {
+    data,
+    handleCardClick: () => {
       previewImgPopup.open(data);
-    }
+    },
+    cardSelector: '#card-template'
   };
-  const card = new Card(newCardElement, '#card-template');
+  const card = new Card(newCardElement);
   const cardElement = card.getView();
   cardList.addItem(cardElement);
   return card;
@@ -88,6 +95,6 @@ const cardList = new Section({
   });
 cardList.renderItems();
 
-//Event Listeners
+//Event Listeners (Open Forms)
 editInfoBtn.addEventListener('click', openEditForm);
 addImgBtn.addEventListener('click', openImageForm);
