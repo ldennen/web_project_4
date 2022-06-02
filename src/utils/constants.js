@@ -59,15 +59,7 @@ const validationSettings = {
   errorClass: "popup__error_visible"
 };
 
-
 //Templates
-const cardSelector = '#card-template';
-
-//Add new card
-const renderCard = (data, wrap) => {
-  const card = new Card(data, cardSelector);
-  wrap.prepend(card.getView());
-};
 
 export {
   initialCards,
@@ -78,7 +70,6 @@ export {
   profileAbtEl,
   editFormNameInput,
   editFormAbtInput,
-  cardSelector,
   editInfoBtn,
   addImgBtn
 }

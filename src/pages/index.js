@@ -15,8 +15,8 @@ import {
   profileAbtEl,
   editFormNameInput,
   editFormAbtInput,
-  cardSelector,
-  editInfoBtn
+  editInfoBtn,
+  addImgBtn
 } from "../utils/constants.js";
 
 //Form Validation
@@ -27,8 +27,8 @@ addFormValidator.enableValidation();
 
 //Profile functions
 const editUserInfoForm = new PopupWithForm({
-  popupSelector: '.popup_type_edit'
-  handleFormSubmit: getEditFormValues
+  popupSelector: '.popup_type_edit',
+  handleFormSubmit: getEditFormValues,
 });
 editUserInfoForm.setEventListeners();
 
@@ -73,8 +73,9 @@ function renderCards(data) {
     handleCardClick: () => {
       previewImgPopup.open(data);
     },
-    cardSelector
-  });
+  },
+  '#card-template',
+  );
   const cardElement = card.getView();
   cardList.addItem(cardElement);
 }
@@ -82,9 +83,9 @@ function renderCards(data) {
 //Inital Cards
 const cardList = new Section({ 
   items: initialCards,
-  renderer: renderCards},
-  containerSelector: '.elements__container'
-);
+  renderer: renderCards,
+  containerSelector: '.elements__container',
+});
 cardList.renderItems();
 
 //Event Listeners

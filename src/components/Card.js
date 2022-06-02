@@ -35,8 +35,8 @@ class Card {
   getView() {
     this._element = this._getTemplate();
     this._imageElement = this._element.querySelector('.elements__card-image');
-    imageElement.alt = this._name;
-    imageElement.src = this._link;
+    this._imageElement.alt = this._name;
+    this._imageElement.src = this._link;
     const cardTitle = this._element.querySelector('.elements__card-title');
     cardTitle.textContent = this._name;
     this._setEventListeners();
