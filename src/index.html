@@ -11,7 +11,9 @@
     </header>
     <main>
       <section class="profile">
-        <img class="profile__avatar" src="<%=require('./images/jacques-costeau.jpg')%>" alt="Jacques Cousteau">
+        <div class="profile__avatar-content">
+          <img class="profile__avatar" src="<%=require('./images/jacques-costeau.jpg')%>" alt="Jacques Cousteau">
+        </div>
         <div class="profile__info">
           <h1 class="profile__info-name">Jacques Cousteau</h1>
           <button type="button" class="button button_location_info"></button>
@@ -96,7 +98,7 @@
         <button type="button" class="button button_location_close"></button>
         <form class="confirm-form popup__form">
           <h2 class="popup__header">Are you sure?</h2>
-          <button class="button button_location_submit popup__button" type="submit" >Yes</button>
+          <button class="button button_location_submit popup__button" type="submit">Yes</button>
         </form>
       </div>
     </div>
@@ -106,7 +108,10 @@
         <img class="elements__card-image" src="#" alt="#">
         <div class="elements__card-content">
           <h2 class="elements__card-title"></h2>
-          <button type="button" class="button button_location_like"></button>
+          <div class="elements__card-button-content">
+            <button type="button" class="button button_location_like"></button>
+            <p class="button_location_like-counter"></p>
+          </div>
         </div>
       </li>
     </template>

@@ -2,9 +2,7 @@ class Popup {
   constructor(popupSelector) {
     this._popupElement = document.querySelector(popupSelector);
     this._handleEscUp = this._handleEscUp.bind(this);
-    this._handleOverlayClickClose
-     = this._handleOverlayClickClose
-    .bind(this);
+    this._handleOverlayClickClose = this._handleOverlayClickClose.bind(this);
   }
 
   _handleEscUp(evt) {

@@ -1,0 +1,4 @@
+.elements__card-button-content {
+  display: flex;
+  flex-direction: column;
+}
